@@ -1,0 +1,30 @@
+﻿<Window x:Class="WPF_5_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Графический редактор" Height="350" Width="520" Loaded="Window_Loaded">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" VerticalContentAlignment="Top">
+            <MenuItem Header="_Файл">
+                <MenuItem Header="_Открыть" Click="MenuItem_Click"/>
+                <MenuItem Header="_Сохранить" Click="MenuItem_Click1"/>
+                <Separator/>
+                <MenuItem Header="_Выход" Click="MenuItem_Click2"/>
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <TextBlock Margin="5" Text="Выберите режим: "/>
+                <ComboBox x:Name="lstEditingMode" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,0,10,0"/>
+            </StackPanel>
+            <InkCanvas x:Name="inkCanvas" Grid.Row="1" Background="LightBlue" EditingMode="{Binding ElementName=lstEditingMode, Path=SelectedItem}" Gesture="inkCanvas_Gesture">
+                <Image x:Name="image"/>
+            </InkCanvas>
+            <TextBox x:Name="gestureName" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+        </Grid>
+    </DockPanel>
+</Window>
